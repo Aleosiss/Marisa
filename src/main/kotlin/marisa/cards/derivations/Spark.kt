@@ -40,6 +40,8 @@ class Spark : CustomCard(
 
     override fun makeCopy(): AbstractCard = Spark()
 
+    override fun makeStatEquivalentCopy(): AbstractCard = super.makeStatEquivalentCopy().also { it.retain = this.retain }
+
     override fun upgrade() {
         if (upgraded) return
         upgradeName()

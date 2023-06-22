@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.powers.AbstractPower
 import marisa.cards.derivations.Spark
 import marisa.cards.upgraded
+import marisa.p
 
 class CasketOfStarPlusPower(owner: AbstractCreature?, amount: Int) : AbstractPower() {
     init {
@@ -20,9 +21,7 @@ class CasketOfStarPlusPower(owner: AbstractCreature?, amount: Int) : AbstractPow
     }
 
     override fun onGainedBlock(blockAmount: Float) {
-        addToBot(
-            MakeTempCardInHandAction(Spark().upgraded(), amount)
-        )
+        addToBot(MakeTempCardInHandAction(Spark().upgraded().apply { retain = p.endTurnQueued }, amount))
     }
 
     override fun updateDescription() {

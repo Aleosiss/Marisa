@@ -28,23 +28,9 @@ class CasketOfStar : CustomCard(
 
     override fun use(p: AbstractPlayer, unused: AbstractMonster?) {
         if (upgraded) {
-            addToBot(
-                ApplyPowerAction(
-                    p,
-                    p,
-                    CasketOfStarPlusPower(p, 1),
-                    1
-                )
-            )
+            addToBot(ApplyPowerAction(p, p, CasketOfStarPlusPower(p, 1), 1))
         } else {
-            addToBot(
-                ApplyPowerAction(
-                    p,
-                    p,
-                    CasketOfStarPower(p, 1),
-                    1
-                )
-            )
+            addToBot(ApplyPowerAction(p, p, CasketOfStarPower(p, 1), 1))
         }
     }
 
