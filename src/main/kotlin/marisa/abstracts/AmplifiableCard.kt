@@ -11,7 +11,6 @@ import marisa.ApplyPowerToPlayerAction
 import marisa.MarisaContinued.Companion.logger
 import marisa.addToTop
 import marisa.powers.Marisa.*
-import marisa.relics.AmplifyWand
 
 /**
  * returns nullable player, so it can be used in compendium.
@@ -21,12 +20,15 @@ import marisa.relics.AmplifyWand
  */
 private val p: AbstractPlayer? get() = AbstractDungeon.player
 
-private fun applyAmplify() {
-    addToTop(ApplyPowerToPlayerAction(GrandCrossPower::class))
-    p?.getPower(EventHorizonPower.POWER_ID)?.onSpecificTrigger()
-    p?.getRelic(AmplifyWand.ID)?.onTrigger()
-}
+private val subscribers
+    get() = listOf(p?.relics, p?.powers, p?.hand?.group, p?.discardPile?.group, p?.drawPile?.group, p?.exhaustPile?.group,)
 
+private fun applyAmplify() {
+    addToTop(ApplyPowerToPlayerAction(AmplifiedPower::class))
+
+    subscribers.flatMap { it?.filterIsInstance<OnAmplify>().orEmpty() }
+        .forEach { it.onAmplify() }
+}
 
 private fun isAmplifyDisabled(): Boolean {
     val player = p

@@ -9,8 +9,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
+import com.megacrit.cardcrawl.relics.SmilingMask.COST
 import marisa.patches.AbstractCardEnum
-import marisa.powers.Marisa.GrandCrossPower
+import marisa.powers.Marisa.AmplifiedPower
 
 class GrandCross : CustomCard(
     ID,
@@ -30,7 +31,7 @@ class GrandCross : CustomCard(
 
     override fun applyPowers() {
         super.applyPowers()
-        if (AbstractDungeon.player.hasPower(GrandCrossPower.POWER_ID)) {
+        if (AbstractDungeon.player.hasPower(AmplifiedPower.POWER_ID)) {
             if (costForTurn != 0) {
                 this.flash()
                 costForTurn = 0
@@ -38,19 +39,9 @@ class GrandCross : CustomCard(
         }
     }
 
-    override fun use(p: AbstractPlayer, m: AbstractMonster?) {
-        addToBot(
-            DamageAction(
-                m,
-                DamageInfo(
-                    p,
-                    damage,
-                    damageTypeForTurn
-                ),
-                AttackEffect.SLASH_DIAGONAL
-            )
-        )
-    }
+    override fun use(p: AbstractPlayer, m: AbstractMonster?) =
+        addToBot(DamageAction(m, DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SLASH_DIAGONAL))
+
 
     override fun makeCopy(): AbstractCard = GrandCross()
 

@@ -839,7 +839,7 @@
       ],
       "additionalProperties": false
     },
-    "GrandCrossPower": {
+    "AmplifiedPower": {
       "type": "object",
       "properties": {
         "NAME": {
@@ -1043,7 +1043,7 @@
     "DarkSparkPower",
     "MagicChantPower",
     "SatelIllusPower",
-    "GrandCrossPower",
+    "AmplifiedPower",
     "Diaspora",
     "TalismanPower",
     "Wraith",

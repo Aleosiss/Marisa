@@ -129,7 +129,7 @@ export const schema = z.object({
     "NAME": z.string(),
     "DESCRIPTIONS": z.tuple([z.string(), z.string()]),
   }).strict(),
-  "GrandCrossPower": z.object({
+  "AmplifiedPower": z.object({
     "NAME": z.string(),
     "DESCRIPTIONS": z.tuple([z.string()]),
   }).strict(),

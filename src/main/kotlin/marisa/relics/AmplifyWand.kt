@@ -6,8 +6,9 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
+import marisa.abstracts.OnAmplify
 
-class AmplifyWand : CustomRelic(
+class AmplifyWand : OnAmplify, CustomRelic(
     ID,
     ImageMaster.loadImage(IMG),
     ImageMaster.loadImage(IMG_OTL),
@@ -34,4 +35,6 @@ class AmplifyWand : CustomRelic(
         private const val IMG_OTL = "img/relics/outline/AmplifyWand_s.png"
         private const val BLOCK_AMT = 4
     }
+
+    override fun onAmplify() = onTrigger()
 }

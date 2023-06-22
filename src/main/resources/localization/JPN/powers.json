@@ -225,7 +225,7 @@
       " [E] を得る。"
     ]
   },
-  "GrandCrossPower": {
+  "AmplifiedPower": {
     "NAME": "魔法増幅",
     "DESCRIPTIONS": [
       "このターン #y増幅 を使用しました"

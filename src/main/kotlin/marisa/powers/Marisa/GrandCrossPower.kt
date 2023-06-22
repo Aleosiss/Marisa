@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.powers.AbstractPower
 import marisa.RemoveSelfAction
 
-class GrandCrossPower(owner: AbstractCreature?) : AbstractPower() {
+class AmplifiedPower(owner: AbstractCreature?) : AbstractPower() {
     init {
         name = NAME
         ID = POWER_ID
@@ -18,18 +18,14 @@ class GrandCrossPower(owner: AbstractCreature?) : AbstractPower() {
     }
 
     override fun stackPower(stackAmount: Int) {}
-    override fun atEndOfTurn(isPlayer: Boolean) {
-        addToBot(
-            RemoveSelfAction()
-        )
-    }
+    override fun atEndOfTurn(isPlayer: Boolean) = addToBot(RemoveSelfAction())
 
     override fun updateDescription() {
         description = DESCRIPTIONS[0]
     }
 
     companion object {
-        const val POWER_ID = "GrandCrossPower"
+        const val POWER_ID = "AmplifiedPower"
         private val powerStrings = CardCrawlGame.languagePack
             .getPowerStrings(POWER_ID)
         val NAME = powerStrings.NAME

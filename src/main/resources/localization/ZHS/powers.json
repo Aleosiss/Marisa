@@ -225,7 +225,7 @@
       " 点能量。"
     ]
   },
-  "GrandCrossPower": {
+  "AmplifiedPower": {
     "NAME": "增幅",
     "DESCRIPTIONS": [
       "你在这回合已发动了 #y增幅 效果。"

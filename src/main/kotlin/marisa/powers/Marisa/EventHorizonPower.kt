@@ -6,9 +6,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.powers.AbstractPower
 import marisa.MarisaContinued
+import marisa.abstracts.OnAmplify
 import marisa.action.DiscToHandATKOnly
 
-class EventHorizonPower(owner: AbstractCreature?, amount: Int) : AbstractPower() {
+class EventHorizonPower(owner: AbstractCreature?, amount: Int) : OnAmplify, AbstractPower() {
     private var cnt: Int
 
     init {
@@ -67,4 +68,6 @@ class EventHorizonPower(owner: AbstractCreature?, amount: Int) : AbstractPower()
         val NAME = powerStrings.NAME
         val DESCRIPTIONS = powerStrings.DESCRIPTIONS
     }
+
+    override fun onAmplify() = onSpecificTrigger()
 }
